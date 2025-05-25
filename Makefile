@@ -1,4 +1,10 @@
-all:
-	gcc hello.c -o hello
+all: hello
+
+hello: hello.o
+	$(CC) $(CFLAGS) -o hello hello.o
+
 clean:
-	rm -rf hello
+	rm -f hello hello.o
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
